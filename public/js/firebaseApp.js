@@ -20,18 +20,20 @@ var sizeBBDD = "";
       var columna1 = document.getElementById('columna1');
       var columna2 = document.getElementById('columna2');
       var columna3 = document.getElementById('columna3');
-      
-      var rootRef = firebase.database().ref();
       var columna = "";
+      var rootRef = firebase.database().ref();
+      
       var j = 0;
        
-      // TODO Utiliza función on en vez de once
-      rootRef.once('value').then(function(snapshot) {
-        console.log(snapshot.exists());
+      
+    rootRef.on('value',function(snapshot) {   
+        console.log("Exist? -> "+snapshot.exists());
+        console.log("Snapshot -> ");
         console.log(snapshot);
-        var bbdd = snapshot.exportVal();
-        console.log(bbdd)
-        console.log(snapshot.numChildren());
+        console.log("Database -> ");
+        console.log(snapshot.exportVal());
+        console.log("Registros -> "+snapshot.numChildren());
+        columna1.innerHTML = "";columna2.innerHTML = "";columna3.innerHTML = "";
         snapshot.forEach(function(gifsSnapshot){
             columna = '<img src="'+gifsSnapshot.val().url+'" style="width:100%">'; 
             if((j+1) % 3 == 2)
