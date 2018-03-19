@@ -13,8 +13,7 @@ var sizeBBDD = "";
       messagingSenderId: "836215832085"
     };
     
-  
-  primary = firebase.initializeApp(config);
+    primary = firebase.initializeApp(config);
 
        //Get elements
       var columna1 = document.getElementById('columna1');
